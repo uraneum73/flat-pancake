@@ -1,0 +1,83 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf610
+{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fnil\fcharset0 Monaco;\f2\fswiss\fcharset0 Helvetica;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red111\green111\blue111;\red242\green242\blue242;
+\red0\green0\blue109;\red14\green110\blue109;\red39\green52\blue60;\red14\green63\blue99;\red243\green246\blue249;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c50980\c50980\c50980;\cssrgb\c96078\c96078\c96078;
+\cssrgb\c0\c0\c50196;\cssrgb\c0\c50196\c50196;\cssrgb\c20000\c26667\c30196;\cssrgb\c4706\c31765\c46275;\cssrgb\c96078\c97255\c98039;
+}
+\margl1440\margr1440\vieww18160\viewh11340\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf0 \expnd0\expndtw0\kerning0
+## Build docker image\
+\
+```\
+$ cd /path/to/Dockerfile\
+$ sudo docker build .\
+```\
+\
+View running processes\
+\
+```\
+$ sudo docker ps\
+```\
+\
+View all processes\
+\
+```\
+$ sudo docker ps -a\
+```\
+\
+Run an image in a new container daemonized\
+\
+```\
+$ sudo docker run -d <image_name>\
+```\
+\
+Run an image in interactive mode with the command `/bin/bash`\
+\
+```\
+$ sudo docker run -i -t <image_name> /bin/bash\
+```\
+\
+Run an image in interactive mode with the command `/bin/bash` and link the ports.\
+\
+```\
+$ sudo docker run -i -t --link <docker_container_name>:<docker_container_alias> <image_name> /bin/bash\
+```\
+\
+Run an image with an ENTRYPOINT command in interactive mode with the command `/bin/bash`\
+\
+```\
+$ sudo docker run --entrypoint /bin/bash -i -t <image_name>\
+```\
+\
+Run an image in interactive mode with the command `/bin/bash` mounting the host director `/var/app/current` to the container directory `/usr/src/app`\
+\
+```\
+$ sudo docker run -i -t -v /var/app/current:/usr/src/app/ <image_name> /bin/bash\
+```\
+\
+Run an image in interactive mode with the command `/bin/bash` setting the environments variables `FOO` and `BAR`\
+\
+```\
+$ sudo docker run -i -t -e FOO=foo -e BAR=bar <image_name> /bin/bash\
+```\
+\
+\
+Example:\
+\pard\pardeftab720\partightenfactor0
+
+\f1 \cf3 \cb4 docker run \cf5 -it\cf3  \cf5 -v\cf3  $\{\cf6 PWD\cf3 \}:/app \cf5 -v\cf3  /app/node_modules \cf5 -p\cf3  4201:4200 \cf5 --rm\cf3  example:dev
+\f0 \cf0 \cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs28 \cf7 The 
+\f3\fs25\fsmilli12600 \cf8 \cb9 -it
+\f2\fs28 \cf7 \cb1  instructs Docker to allocate a pseudo-TTY connected to the container\'92s stdin; creating an interactive 
+\f3\fs25\fsmilli12600 \cf8 \cb9 bash
+\f2\fs28 \cf7 \cb1  shell in the container.}
